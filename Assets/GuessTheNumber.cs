@@ -15,7 +15,7 @@ public class GuessTheNumber : MonoBehaviour
 
     int attemptsNum = 3;  // Help here, if I make these variables accesible for all methods in the script,
                           // I delete these and use the ones in gameSetup()
-    int randomNumber = 5; // Help here, how can I make a random num accessible for all the methods??
+    int randomNumber; // Help here, how can I make a random num accessible for all the methods??
 
     // Start is called before the first frame update
     void Start()
@@ -31,12 +31,13 @@ public class GuessTheNumber : MonoBehaviour
 
     public void GameSetup() // Help here, how to make variables accesible or public for all methods in the script.
     {
-            attemptsNum = 3;  // Help here, Make it a public variable.
-            randomNumber = 5; // Help here, Make it a public variable.
+            int attemptsNum = 3;
+            randomNumber = UnityEngine.Random.Range(1, 11);
             input.enabled = true;
             submit.enabled = true;
+            input.text = null;
             GuessANumberText.text = "Guess a number between 1 and 10!";
-            attempts.text = "Attempts remaining " + attemptsNum;
+            attempts.text = "Attempts remaining: " + attemptsNum;
             attempts.color = Color.white;
     }
 
@@ -53,17 +54,17 @@ public class GuessTheNumber : MonoBehaviour
             input.text = null;
             if (attemptsNum == 2)
             {
-                attempts.text = "Attempts remaining " + attemptsNum;
+                attempts.text = "Attempts remaining: " + attemptsNum;
                 attempts.color = Color.yellow;
             }
             if (attemptsNum == 1)
             {
-                attempts.text = "Attempts remaining " + attemptsNum;
+                attempts.text = "Attempts remaining: " + attemptsNum;
                 attempts.color = Color.red;
             }
             if (attemptsNum == 0)
             {
-                attempts.text = "Attempts remaining " + attemptsNum;
+                attempts.text = "Attempts remaining: " + attemptsNum;
                 attempts.color = Color.black;
                 Lose();
                 attemptsNum--;
@@ -75,6 +76,7 @@ public class GuessTheNumber : MonoBehaviour
     public void Win()
     {
         GuessANumberText.text = "You Won! :D";
+        attempts.color = Color.green;
         input.enabled = false;
         submit.enabled = false;
     }
