@@ -13,9 +13,8 @@ public class GuessTheNumber : MonoBehaviour
     [SerializeField] TMP_InputField input;
     [SerializeField] Button submit;
 
-    int attemptsNum = 3;  // Help here, if I make these variables accesible for all methods in the script,
-                          // I delete these and use the ones in gameSetup()
-    int randomNumber; // Help here, how can I make a random num accessible for all the methods??
+    int attemptsNum;
+    int randomNumber;
 
     // Start is called before the first frame update
     void Start()
@@ -29,9 +28,9 @@ public class GuessTheNumber : MonoBehaviour
 
     }
 
-    public void GameSetup() // Help here, how to make variables accesible or public for all methods in the script.
+    public void GameSetup()
     {
-            int attemptsNum = 3;
+            attemptsNum = 3;
             randomNumber = UnityEngine.Random.Range(1, 11);
             input.enabled = true;
             submit.enabled = true;
@@ -92,7 +91,6 @@ public class GuessTheNumber : MonoBehaviour
 
     public void resetGame()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         GameSetup();
     }
 
